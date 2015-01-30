@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130024630) do
+ActiveRecord::Schema.define(version: 20150130025323) do
 
   create_table "blogs", force: true do |t|
     t.string   "name"
@@ -19,5 +19,25 @@ ActiveRecord::Schema.define(version: 20150130024630) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "messages", force: true do |t|
+    t.integer  "post_id"
+    t.string   "author"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["post_id"], name: "index_messages_on_post_id"
+
+  create_table "posts", force: true do |t|
+    t.integer  "blog_id"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["blog_id"], name: "index_posts_on_blog_id"
 
 end
