@@ -1,0 +1,38 @@
+1. Create 5 new blog posts
+	
+	Blog.create(name:"First Blog", description:"Ea persius urbanitas vel, qui habemus luptatum ut. Graecis noluisse cu has, per dico numquam ne, perpetua constituam et mei. Eu justo graece sed. Sea primis aperiam in, vix ei nisl consetetur.")
+	...
+
+2. Create several posts for each blog
+
+	Post.create(blog:Blog.first, title:"The first post", description:"This is the very first post on the very first blog!")
+	...
+
+3. Create several messages for the first post
+
+	Message.create(post:Post.first, author:"Katrina Sanford", message:"This is just a test of the emergency message testing system")
+
+4 . Know how to retrieve all posts for the first blog
+
+	Blog.first.posts.all
+
+5. Know how to retrieve all the posts for the last blog, sorted by title in DESC order
+
+	Blog.last.posts.order(title: :desc)
+
+6. Know how to update the first post's title
+
+	Post.first.update(title:"First Post!")
+
+7. Know how to delete the third post, and all messages associated with it as well
+
+	(included "dependent: :destroy" in model)
+	Post.find(3).destroy
+
+8. Know how to retrieve all blogs
+	
+	Blog.all
+
+9.  How how to retrieve all blogs whose id is less than 5
+
+	Blog.where("id < 5")
